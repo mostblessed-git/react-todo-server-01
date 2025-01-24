@@ -3,7 +3,11 @@ name: Build, Push, and Deploy Backend
 on:
   push:
     branches:
+<<<<<<< HEAD
       - docker
+=======
+      - main
+>>>>>>> 1cf23e8 (edit yaml file4)
 
 jobs:
   build:
@@ -21,8 +25,14 @@ jobs:
 
     - name: Build and Push Docker Image
       run: |
+<<<<<<< HEAD
         docker build -t ${{ secrets.DOCKER_USERNAME }}/todo-backend .
         docker push ${{ secrets.DOCKER_USERNAME }}/todo-backend
+=======
+        docker buildx build --platform linux/amd64 \
+          --tag ${{ secrets.DOCKER_USERNAME }}/todo-backend:latest \
+          --push .
+>>>>>>> 1cf23e8 (edit yaml file4)
 
   deploy:
     needs: build
@@ -36,7 +46,14 @@ jobs:
         username: ${{ secrets.EC2_USER }}
         key: ${{ secrets.EC2_KEY }}
         script: |
+<<<<<<< HEAD
           docker pull ${{ secrets.DOCKER_USERNAME }}/todo-backend
           docker stop todo-backend || true
           docker rm todo-backend || true
           docker run -d -p 5000:5000 --name todo-backend ${{ secrets.DOCKER_USERNAME }}/todo-backend
+=======
+          docker pull ${{ secrets.DOCKER_USERNAME }}/todo-backend:latest
+          docker stop todo-backend || true
+          docker rm todo-backend || true
+          docker run -d -p 5000:5000 --name todo-backend ${{ secrets.DOCKER_USERNAME }}/todo-backend:latest
+>>>>>>> 1cf23e8 (edit yaml file4)
