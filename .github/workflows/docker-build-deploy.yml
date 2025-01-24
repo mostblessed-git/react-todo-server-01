@@ -21,14 +21,8 @@ jobs:
 
     - name: Build and Push Docker Image
       run: |
-<<<<<<< HEAD
         docker build -t ${{ secrets.DOCKER_USERNAME }}/todo-backend .
         docker push ${{ secrets.DOCKER_USERNAME }}/todo-backend
-=======
-        docker buildx build --platform linux/amd64 \
-          --tag ${{ secrets.DOCKER_USERNAME }}/todo-backend:latest \
-          --push .
->>>>>>> 1cf23e8 (edit yaml file4)
 
   deploy:
     needs: build
