@@ -40,3 +40,5 @@ jobs:
           docker stop todo-backend || true
           docker rm todo-backend || true
           docker run -d -p 5000:5000 --name todo-backend ${{ secrets.DOCKER_USERNAME }}/todo-backend
+
+          
