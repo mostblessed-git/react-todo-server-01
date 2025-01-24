@@ -3,11 +3,7 @@ name: Build, Push, and Deploy Backend
 on:
   push:
     branches:
-<<<<<<< HEAD
-      - docker
-=======
       - main
->>>>>>> 1cf23e8 (edit yaml file4)
 
 jobs:
   build:
